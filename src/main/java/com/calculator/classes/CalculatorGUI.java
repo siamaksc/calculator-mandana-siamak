@@ -15,6 +15,7 @@ public class CalculatorGUI implements ActionListener{
 	private JTextField txfFirstNumber;
 	private JTextField txfSecondNumber;
 	private CalculatorBasicOperations calculator = new CalculatorBasicOperations();
+	private CalculatorAdvancedOperations calAdvance = new CalculatorAdvancedOperations();
 	private JLabel lblResult = new JLabel("Result:");
 	
 	private JLabel lblFirstNumber = new JLabel("first number");
@@ -23,6 +24,8 @@ public class CalculatorGUI implements ActionListener{
 	private JButton btnSubtract = new JButton("-");
 	private JButton btnMultiply = new JButton("*");
 	private JButton btnDivide = new JButton("/");
+	private final JButton btnProcent = new JButton("%");
+	private final JButton btnPower = new JButton("x^ŷ");
 
 	
 	
@@ -48,7 +51,7 @@ public class CalculatorGUI implements ActionListener{
 	 */
 	private void createAndShowGUI() {
 		frmCalculator = new JFrame();
-		frmCalculator.getContentPane().setBackground(Color.CYAN);
+		frmCalculator.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frmCalculator.setTitle("Calculator");
 		frmCalculator.setBounds(100, 100, 255, 300);
 		frmCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,16 +65,7 @@ public class CalculatorGUI implements ActionListener{
 		txfSecondNumber = new JTextField();
 		txfSecondNumber.setBounds(116, 58, 108, 20);
 		frmCalculator.getContentPane().add(txfSecondNumber);
-		txfSecondNumber.setColumns(10);	
-		
-		lblFirstNumber.setBounds(10, 30, 96, 14);
-		lblSecondNumber.setBounds(10, 61, 96, 14);
-		lblResult.setBounds(10, 86, 223, 14);
-
-		btnAdd.setBounds(10, 139, 47, 23);
-		btnSubtract.setBounds(67, 139, 48, 23);	
-		btnMultiply.setBounds(125, 139, 47, 23);	
-		btnDivide.setBounds(182, 139, 37, 23);	
+		txfSecondNumber.setColumns(10);
 	}
 	
 	/**
@@ -80,13 +74,30 @@ public class CalculatorGUI implements ActionListener{
 	 * @return none
 	 */
 	public void addComponentsToFrame(){
+		lblFirstNumber.setBounds(10, 30, 96, 14);
 		frmCalculator.getContentPane().add(lblFirstNumber);
+		lblSecondNumber.setBounds(10, 61, 96, 14);
 		frmCalculator.getContentPane().add(lblSecondNumber);
+		lblResult.setBounds(10, 86, 223, 14);
 		frmCalculator.getContentPane().add(lblResult);
+		btnAdd.setBounds(10, 139, 47, 23);
 		frmCalculator.getContentPane().add(btnAdd);
+		btnSubtract.setBounds(67, 139, 48, 23);
 		frmCalculator.getContentPane().add(btnSubtract);
+		btnMultiply.setBounds(125, 139, 47, 23);
 		frmCalculator.getContentPane().add(btnMultiply);
+		btnDivide.setBounds(182, 139, 51, 23);
 		frmCalculator.getContentPane().add(btnDivide);
+		btnProcent.setBounds(10, 168, 48, 25);
+		frmCalculator.getContentPane().add(btnProcent);
+		frmCalculator.getContentPane().add(btnPower);
+		btnPower.setBounds(67, 168, 70, 25);
+		
+		
+	
+	
+		
+		
 	}
 		
 	
@@ -95,6 +106,8 @@ public class CalculatorGUI implements ActionListener{
 		btnSubtract.addActionListener(this);
 		btnMultiply.addActionListener(this);
 		btnDivide.addActionListener(this);
+		btnProcent.addActionListener(this);
+		btnPower.addActionListener(this);
 	}
 
 	
@@ -135,6 +148,15 @@ public class CalculatorGUI implements ActionListener{
 		if (e.getSource() == btnDivide){
 			double result = calculator.divide(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText("Result: "+result);		
-		}		
+		}	
+		if (e.getSource() == btnProcent){
+			double result = calAdvance.procent(getValueFromTextField1(), getValueFromTextField2());
+			lblResult.setText("Result: "+result);
+		}
+		if (e.getSource() == btnPower){
+			double result = calAdvance.power(getValueFromTextField1(), getValueFromTextField2());
+			lblResult.setText("Result: "+result);
+
+		}
 	}	
 }
