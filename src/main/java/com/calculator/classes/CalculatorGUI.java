@@ -26,6 +26,7 @@ public class CalculatorGUI implements ActionListener{
 	private JButton btnDivide = new JButton("/");
 	private final JButton btnProcent = new JButton("%");
 	private final JButton btnPower = new JButton("x^ŷ");
+	private final JButton btnAC = new JButton("AC");
 
 	
 	
@@ -90,9 +91,10 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(btnDivide);
 		btnProcent.setBounds(10, 168, 48, 25);
 		frmCalculator.getContentPane().add(btnProcent);
-		frmCalculator.getContentPane().add(btnPower);
 		btnPower.setBounds(67, 168, 70, 25);
-		
+		frmCalculator.getContentPane().add(btnPower);
+		frmCalculator.getContentPane().add(btnAC);
+		btnAC.setBounds(149, 174, 60, 25);
 		
 	
 	
@@ -108,6 +110,7 @@ public class CalculatorGUI implements ActionListener{
 		btnDivide.addActionListener(this);
 		btnProcent.addActionListener(this);
 		btnPower.addActionListener(this);
+		btnAC.addActionListener(this);
 	}
 
 	
@@ -158,5 +161,11 @@ public class CalculatorGUI implements ActionListener{
 			lblResult.setText("Result: "+result);
 
 		}
-	}	
+		if (e.getSource() == btnAC){
+			txfFirstNumber.setText(null);
+			txfSecondNumber.setText(null);
+			lblResult.setText(null);
+			
+		}
+	}	 
 }
