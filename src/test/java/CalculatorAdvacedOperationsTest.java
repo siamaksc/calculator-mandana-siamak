@@ -35,7 +35,6 @@ public class CalculatorAdvacedOperationsTest {
 				result = Math.pow(firstNumber, secondNumber);
 				LOG.info("Testing the power method with the values " + firstNumber+" and "+ secondNumber +" = " + result);
 				assertEquals("The result should be: "+ result, calAdvance.power(firstNumber, secondNumber),result,0.001);
-			
 			}
 			secondNumber = 0.5;
 			firstNumber = -2;
