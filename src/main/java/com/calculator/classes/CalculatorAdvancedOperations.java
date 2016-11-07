@@ -13,8 +13,8 @@ public class CalculatorAdvancedOperations implements CalculatorAdvancedOperation
 
 	public double power(double firstNumber, double secondNumber) {
 		double result= Math.pow(firstNumber, secondNumber);
-		if (Double.MAX_VALUE == result){
-			JOptionPane.showMessageDialog(null, "MAX VALUE ", "Error message", JOptionPane.ERROR_MESSAGE);			
+		if (Double.MAX_VALUE <= result || Double.isNaN(result)){
+			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);			
 			return -1111.1111;
 		}
 		return result;
