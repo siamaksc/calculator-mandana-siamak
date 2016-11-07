@@ -28,10 +28,11 @@ public class CalculatorGUI implements ActionListener{
 	private JButton btnAdd = new JButton("+");
 	private JButton btnSubtract = new JButton("-");
 	private JButton btnMultiply = new JButton("*");
-	private JButton btnDivide = new JButton("÷");
+	private JButton btnDivide = new JButton("\u00F7");
 	private JButton btnProcent = new JButton("%");
 	private JButton btnPower = new JButton("x^y");
 	private JButton btnAC = new JButton("AC");
+	private JButton btnSquareRoot = new JButton("\u221A");
 	private JButton btnZero = new JButton("0");
 	private JButton btnOne = new JButton("1");
 	private JButton btnTwo = new JButton("2");
@@ -111,6 +112,8 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(btnPower);
 		btnAC.setBounds(446, 138, 60, 25);
 		frmCalculator.getContentPane().add(btnAC);
+		btnSquareRoot.setBounds(166, 228, 60, 25);
+		frmCalculator.getContentPane().add(btnSquareRoot);
 		
 		btnZero.setBounds(236, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnZero);
@@ -135,6 +138,9 @@ public class CalculatorGUI implements ActionListener{
 		
 		btnDecimal.setBounds(306, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnDecimal);
+		
+	
+		
 	}
 		
 	public void addActionListeners(){
@@ -145,6 +151,7 @@ public class CalculatorGUI implements ActionListener{
 		btnProcent.addActionListener(this);
 		btnPower.addActionListener(this);
 		btnAC.addActionListener(this);
+		btnSquareRoot.addActionListener(this);
 		btnZero.addActionListener(this);
 		btnOne.addActionListener(this);
 		btnTwo.addActionListener(this);
@@ -198,36 +205,46 @@ public class CalculatorGUI implements ActionListener{
 	    });
 		if (e.getSource() == btnAdd){
 			double result = calculator.add(getValueFromTextField1(), getValueFromTextField2());
-			lblResult.setText("Result: "+result);
+			lblResult.setText(String.valueOf(result));
 		}		
 		
 		if (e.getSource() == btnSubtract){
 			double result = calculator.subtract(getValueFromTextField1(), getValueFromTextField2());
-			lblResult.setText("Result: "+result);
+			lblResult.setText(String.valueOf(result));
 		}
 		
 		if (e.getSource() == btnMultiply){
 			double result = calculator.multiply(getValueFromTextField1(), getValueFromTextField2());
-			lblResult.setText("Result: "+result);
+			lblResult.setText(String.valueOf(result));
 		}
 		
 		if (e.getSource() == btnDivide){
 			double result = calculator.divide(getValueFromTextField1(), getValueFromTextField2());
-			lblResult.setText("Result: "+result);		
+			lblResult.setText(String.valueOf(result));		
 		}	
 		if (e.getSource() == btnProcent){
 			double result = calAdvance.procent(getValueFromTextField1(), getValueFromTextField2());
-			lblResult.setText("Result: "+result);
+			lblResult.setText(String.valueOf(result));
 		}
 		if (e.getSource() == btnPower){
 			double result = calAdvance.power(getValueFromTextField1(), getValueFromTextField2());
-			lblResult.setText("Result: "+result);
+			lblResult.setText(String.valueOf(result));
 		}
 		if (e.getSource() == btnAC){
 			txfFirstNumber.setText(null);
 			txfSecondNumber.setText(null);
 			lblResult.setText(null);
 		}
+		if (e.getSource() == btnSquareRoot){
+			double result = calAdvance.squareRoot(getValueFromTextField1());
+			lblResult.setText(String.valueOf(result));
+		}
+		/*if (e.getSource() == btnFib){
+			for (double i = 0; i < getValueFromTextField1(); i++){
+				double result  = calAdvance.fibonacci(i);
+				lblResult.setText(String.valueOf(result));
+			}
+		}*/
 		if (e.getSource() == btnZero){
 			if (txfFirstNumber_selected){
 				txfFirstNumber.setText(txfFirstNumber.getText()+"0");
@@ -320,5 +337,4 @@ public class CalculatorGUI implements ActionListener{
 		
 		
 	}
-
 }
