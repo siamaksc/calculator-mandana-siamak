@@ -29,12 +29,23 @@ public class CalculatorAdvancedOperations implements CalculatorAdvancedOperation
 		return result;
 	}
 	
-	/*public double fibonacci(double number) {
-			if (number<=1){
-				return number;
-			}else{
-				return fibonacci(number-1)+fibonacci(number-2);
-			}
-	}*/
+	public double sine (double firstNumber){
+		double result = Math.sin(Math.toRadians(firstNumber));
+		return result;
+	}
+	
+	public double cosine (double firstNumber){
+		double result = Math.cos(Math.toRadians(firstNumber));
+		return result;
+	}
+	
+	public double tangent (double firstNumber){
+		double result = Math.tan(Math.toRadians(firstNumber));
+		if (firstNumber == 90 || firstNumber == -90){
+			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);			
+			return -1111.1111;
+		}
+		return result;
+	}
 	
 }
