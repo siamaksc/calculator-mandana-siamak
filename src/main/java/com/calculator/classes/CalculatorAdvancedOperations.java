@@ -13,8 +13,8 @@ public class CalculatorAdvancedOperations implements CalculatorAdvancedOperation
 
 	public double power(double firstNumber, double secondNumber) {
 		double result= Math.pow(firstNumber, secondNumber);
-		if (Double.MAX_VALUE == result){
-			JOptionPane.showMessageDialog(null, "MAX VALUE ", "Error message", JOptionPane.ERROR_MESSAGE);			
+		if (Double.MAX_VALUE <= result || Double.isNaN(result)){
+			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);			
 			return -1111.1111;
 		}
 		return result;
@@ -42,9 +42,19 @@ public class CalculatorAdvancedOperations implements CalculatorAdvancedOperation
 	public double tangent (double firstNumber){
 		double result = Math.tan(Math.toRadians(firstNumber));
 		if (firstNumber == 90 || firstNumber == -90){
-			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);			
+			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);		
 			return -1111.1111;
 		}
+		return result;
+	}
+	
+	public double absolute (double firstNumber){
+		double result = Math.abs(firstNumber);
+		return result;
+	}
+	
+	public double PiNumber(){
+		double result  = Math.PI;
 		return result;
 	}
 	
