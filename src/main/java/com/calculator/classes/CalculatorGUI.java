@@ -1,13 +1,10 @@
 package com.calculator.classes;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ActionEvent;
@@ -44,6 +41,9 @@ public class CalculatorGUI implements ActionListener{
 	private JButton btnEight = new JButton("8");
 	private JButton btnNine = new JButton("9");
 	private JButton btnDecimal = new JButton(".");
+	private JButton btnSine = new JButton("sin");
+	private JButton btnCosine = new JButton("cos");
+	private final JButton btnTangent = new JButton("tan");
 	
 	public JFrame getFrmCalculator() {
 		return frmCalculator;
@@ -94,7 +94,7 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(lblFirstNumber);
 		lblSecondNumber.setBounds(10, 61, 96, 14);
 		frmCalculator.getContentPane().add(lblSecondNumber);
-		lblResult.setBounds(67, 89, 378, 20);
+		lblResult.setBounds(66, 89, 378, 20);
 		frmCalculator.getContentPane().add(lblResult);
 		lblResult_1.setBounds(10, 89, 46, 20);
 		frmCalculator.getContentPane().add(lblResult_1);
@@ -106,7 +106,7 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(btnMultiply);
 		btnDivide.setBounds(446, 168, 60, 25);
 		frmCalculator.getContentPane().add(btnDivide);
-		btnProcent.setBounds(376, 138, 60, 25);
+		btnProcent.setBounds(376, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnProcent);
 		btnPower.setBounds(166, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnPower);
@@ -114,6 +114,12 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(btnAC);
 		btnSquareRoot.setBounds(166, 228, 60, 25);
 		frmCalculator.getContentPane().add(btnSquareRoot);
+		btnSine.setBounds(166, 168, 60, 25);
+		frmCalculator.getContentPane().add(btnSine);
+		btnCosine.setBounds(166, 198, 60, 25);
+		frmCalculator.getContentPane().add(btnCosine);
+		btnTangent.setBounds(96, 168, 60, 25);
+		frmCalculator.getContentPane().add(btnTangent);
 		
 		btnZero.setBounds(236, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnZero);
@@ -138,6 +144,10 @@ public class CalculatorGUI implements ActionListener{
 		
 		btnDecimal.setBounds(306, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnDecimal);
+		  
+		
+		
+		
 		
 	
 		
@@ -152,6 +162,9 @@ public class CalculatorGUI implements ActionListener{
 		btnPower.addActionListener(this);
 		btnAC.addActionListener(this);
 		btnSquareRoot.addActionListener(this);
+		btnSine.addActionListener(this);
+		btnCosine.addActionListener(this);
+		btnTangent.addActionListener(this);
 		btnZero.addActionListener(this);
 		btnOne.addActionListener(this);
 		btnTwo.addActionListener(this);
@@ -239,12 +252,18 @@ public class CalculatorGUI implements ActionListener{
 			double result = calAdvance.squareRoot(getValueFromTextField1());
 			lblResult.setText(String.valueOf(result));
 		}
-		/*if (e.getSource() == btnFib){
-			for (double i = 0; i < getValueFromTextField1(); i++){
-				double result  = calAdvance.fibonacci(i);
+		if (e.getSource() == btnSine){
+				double result  = calAdvance.sine(getValueFromTextField1());
 				lblResult.setText(String.valueOf(result));
 			}
-		}*/
+		if (e.getSource() == btnCosine){
+			double result  = calAdvance.cosine(getValueFromTextField1());
+			lblResult.setText(String.valueOf(result));
+		}
+		if (e.getSource() == btnTangent){
+			double result  = calAdvance.tangent(getValueFromTextField1());
+			lblResult.setText(String.valueOf(result));
+		}
 		if (e.getSource() == btnZero){
 			if (txfFirstNumber_selected){
 				txfFirstNumber.setText(txfFirstNumber.getText()+"0");
