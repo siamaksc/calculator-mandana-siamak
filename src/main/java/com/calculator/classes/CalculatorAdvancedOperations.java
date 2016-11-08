@@ -3,6 +3,12 @@ package com.calculator.classes;
 import javax.swing.JOptionPane;
 
 import com.calculator.interfaces.CalculatorAdvancedOperationsInterface;
+/**
+ * interface 
+ * This class have eight advanced operations in maths.
+ * (procent,power,squareRoot,sine,cosine,tangent,absolute,PiNumber)
+ *
+ */
 
 public class CalculatorAdvancedOperations implements CalculatorAdvancedOperationsInterface {
 
@@ -13,7 +19,7 @@ public class CalculatorAdvancedOperations implements CalculatorAdvancedOperation
 
 	public double power(double firstNumber, double secondNumber) {
 		double result= Math.pow(firstNumber, secondNumber);
-		if (Double.MAX_VALUE <= result || Double.isNaN(result)){
+		if ( Double.isNaN(result) || result < 0){
 			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);			
 			return -1111.1111;
 		}
@@ -42,9 +48,19 @@ public class CalculatorAdvancedOperations implements CalculatorAdvancedOperation
 	public double tangent (double firstNumber){
 		double result = Math.tan(Math.toRadians(firstNumber));
 		if (firstNumber == 90 || firstNumber == -90){
-			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);			
+			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);		
 			return -1111.1111;
 		}
+		return result;
+	}
+	
+	public double absolute (double firstNumber){
+		double result = Math.abs(firstNumber);
+		return result;
+	}
+	
+	public double PiNumber(){
+		double result  = Math.PI;
 		return result;
 	}
 	

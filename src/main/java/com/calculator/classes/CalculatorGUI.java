@@ -24,7 +24,7 @@ public class CalculatorGUI implements ActionListener{
 	private JLabel lblSecondNumber = new JLabel("second number:");
 	private JButton btnAdd = new JButton("+");
 	private JButton btnSubtract = new JButton("-");
-	private JButton btnMultiply = new JButton("*");
+	private JButton btnMultiply = new JButton("\u00D7");
 	private JButton btnDivide = new JButton("\u00F7");
 	private JButton btnProcent = new JButton("%");
 	private JButton btnPower = new JButton("x^y");
@@ -43,7 +43,10 @@ public class CalculatorGUI implements ActionListener{
 	private JButton btnDecimal = new JButton(".");
 	private JButton btnSine = new JButton("sin");
 	private JButton btnCosine = new JButton("cos");
-	private final JButton btnTangent = new JButton("tan");
+	private JButton btnTangent = new JButton("tan");
+	private JButton btnAbsolute = new JButton("abs");
+	private JButton btnPi = new JButton("\u03C0");
+	private JButton btnNegative = new JButton("\u00B1");
 	
 	public JFrame getFrmCalculator() {
 		return frmCalculator;
@@ -61,7 +64,7 @@ public class CalculatorGUI implements ActionListener{
 		addComponentsToFrame();
 		addActionListeners();
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -120,7 +123,10 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(btnCosine);
 		btnTangent.setBounds(96, 168, 60, 25);
 		frmCalculator.getContentPane().add(btnTangent);
-		
+		btnAbsolute.setBounds(96, 198, 60, 25);
+		frmCalculator.getContentPane().add(btnAbsolute);
+		btnPi.setBounds(96, 228, 60, 25);
+		frmCalculator.getContentPane().add(btnPi);		
 		btnZero.setBounds(236, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnZero);
 		btnOne.setBounds(236, 228, 60, 25);
@@ -140,19 +146,16 @@ public class CalculatorGUI implements ActionListener{
 		btnEight.setBounds(306, 168, 60, 25);
 		frmCalculator.getContentPane().add(btnEight);
 		btnNine.setBounds(376, 168, 60, 25);
-		frmCalculator.getContentPane().add(btnNine);
-		
+		frmCalculator.getContentPane().add(btnNine);		
 		btnDecimal.setBounds(306, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnDecimal);
-		  
-		
-		
-		
-		
-	
-		
+		btnNegative.setBounds(96, 258, 60, 25);
+		frmCalculator.getContentPane().add(btnNegative);
+				
 	}
-		
+		/**
+		 * adding addActionListeners for buttons
+		 */
 	public void addActionListeners(){
 		btnAdd.addActionListener(this);
 		btnSubtract.addActionListener(this);
@@ -165,6 +168,8 @@ public class CalculatorGUI implements ActionListener{
 		btnSine.addActionListener(this);
 		btnCosine.addActionListener(this);
 		btnTangent.addActionListener(this);
+		btnAbsolute.addActionListener(this);
+		btnPi.addActionListener(this);
 		btnZero.addActionListener(this);
 		btnOne.addActionListener(this);
 		btnTwo.addActionListener(this);
@@ -176,6 +181,7 @@ public class CalculatorGUI implements ActionListener{
 		btnEight.addActionListener(this);
 		btnNine.addActionListener(this);
 		btnDecimal.addActionListener(this);
+		btnNegative.addActionListener(this);
 	}
 
 	
@@ -264,6 +270,14 @@ public class CalculatorGUI implements ActionListener{
 			double result  = calAdvance.tangent(getValueFromTextField1());
 			lblResult.setText(String.valueOf(result));
 		}
+		if (e.getSource() == btnAbsolute){
+			double result  = calAdvance.absolute(getValueFromTextField1());
+			lblResult.setText(String.valueOf(result));
+		}
+		if (e.getSource() == btnPi){
+			double result  = calAdvance.PiNumber();
+			lblResult.setText(String.valueOf(result));
+		}
 		if (e.getSource() == btnZero){
 			if (txfFirstNumber_selected){
 				txfFirstNumber.setText(txfFirstNumber.getText()+"0");
@@ -345,6 +359,14 @@ public class CalculatorGUI implements ActionListener{
 			}
 		}
 		if (e.getSource() == btnDecimal){
+			if (txfFirstNumber_selected){
+				txfFirstNumber.setText(txfFirstNumber.getText()+".");
+			}
+			if (txfSecondNumber_selected){
+				txfSecondNumber.setText(txfSecondNumber.getText()+".");
+			}
+		}
+		if (e.getSource() == btnNegative){
 			if (txfFirstNumber_selected){
 				txfFirstNumber.setText(txfFirstNumber.getText()+".");
 			}

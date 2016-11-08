@@ -3,6 +3,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.calculator.classes.CalculatorAdvancedOperations;
+/**
+ * This class testing all methods from 2 interfaces
+ * Test uses random input values and also testing zero, positive and
+ *  negative values i 50 times to each test method
+ */
 
 import java.util.Random;
 import java.util.logging.Logger;
@@ -29,22 +34,28 @@ public class CalculatorAdvacedOperationsTest {
     	  double firstNumber = 0.0;
 			double secondNumber = 0.0;
 			double result =0.0;
+			
 			for (int i = 0; i < 50; i++) {	
 				firstNumber = -100.0 + random.nextDouble()*200;
 				secondNumber = -100.0 + random.nextDouble()*200;
 				result = Math.pow(firstNumber, secondNumber);
 				LOG.info("Testing the power method with the values " + firstNumber+" and "+ secondNumber +" = " + result);
-				assertEquals("The result should be: "+ result, calAdvance.power(firstNumber, secondNumber),result,0.001);
+				assertTrue( calAdvance.power(firstNumber, secondNumber) == result);
 			}
-			secondNumber = 3500;
-			firstNumber = 2;
-			LOG.info("Testing with values  firstnumber and secondNumber to power  " + firstNumber+" and "+ secondNumber );
+      }
+      @Test
+      public void testPower1(){
+			double secondNumber = 3500;
+			double firstNumber = 2;
+			LOG.info("Testing with values firstnumber and secondNumber to power  " + firstNumber+" and "+ secondNumber );
 			assertTrue(calAdvance.power(firstNumber, secondNumber)== -1111.1111);
-			
-			secondNumber = 0.5;
-			firstNumber =-2;
+      }
+      @Test
+      public void testPower2(){
+		double	secondNumber = 0.5;
+			double firstNumber =-2;
 			LOG.info("Testing negative number to power of 0.5 " + firstNumber+" and "+ secondNumber );
-			assertTrue(calAdvance.power(firstNumber, secondNumber)== True);
+			assertTrue(calAdvance.power(firstNumber, secondNumber)== -1111.1111);
       }
       @Test
       public void testSquareRoot() {
@@ -106,5 +117,27 @@ public class CalculatorAdvacedOperationsTest {
     		  assertTrue(calAdvance.tangent(firstNumber)== -1111.1111);
     		  
       }
-    	  
+    	  @Test
+    	  public void testAbsolute() {
+    		  double firstNumber = 0.0;
+    		  double result =0.0;
+    		  for (int i = 0; i< 50; i++){
+    			  firstNumber = -100.0 + random.nextDouble()*200;
+    		      result = Math.abs(firstNumber);
+    		      LOG.info("Testing the Absolute method with the values" + firstNumber + " = " + result);
+    		      assertEquals ("The result should be: " + result, calAdvance.absolute(firstNumber), result,0.001);
+    	  }  
         }
+    	  @Test
+    	  public void testPiNumber(){
+    		  double firstNumber = 0.0;
+    		  double result = 0.0;
+    		  for (int i = 0; i< 50 ; i++){
+    			  firstNumber = -100.0 + random.nextDouble()*200.0;
+    			  result = Math.PI;
+    			  LOG.info("Testing the PiNumber method with the values" + firstNumber + " = " + result);
+    		      assertEquals ("The result should be: " + result, calAdvance.PiNumber(), result,0.001);
+    			  
+    		  }
+    	  }
+}

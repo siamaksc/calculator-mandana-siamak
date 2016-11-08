@@ -1,5 +1,9 @@
 package com.calculator.classes;
 import javax.swing.JOptionPane;
+/**
+ * interface
+ * This class have four fundamental operations of mathematics
+ */
 import com.calculator.interfaces.CalculatorBasicOperationsInterface;
 
 public class CalculatorBasicOperations implements CalculatorBasicOperationsInterface{
@@ -25,3 +29,4 @@ public class CalculatorBasicOperations implements CalculatorBasicOperationsInter
 		return result;
 	}
 }
+
