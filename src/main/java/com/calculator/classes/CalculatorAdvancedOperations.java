@@ -4,16 +4,25 @@ import javax.swing.JOptionPane;
 
 import com.calculator.interfaces.CalculatorAdvancedOperationsInterface;
 
+/**
+ * 
+ * This class contains operations for advance methods of the Scientific Calculator program.
+ * This class does the calculation needed for each method.
+ * This class implements from the interface for advance operations.
+ * 
+ */
 public class CalculatorAdvancedOperations implements CalculatorAdvancedOperationsInterface {
-
-	public double procent(double firstNumber, double secondNumber) {
+	/**
+	 * Calculate percent of two numbers.
+	 */
+	public double percent(double firstNumber, double secondNumber) {
 		double result = firstNumber*(secondNumber/100);
 		return result;
 	}
 
 	public double power(double firstNumber, double secondNumber) {
 		double result= Math.pow(firstNumber, secondNumber);
-		if (Double.MAX_VALUE <= result || Double.isNaN(result)){
+		if (Double.MAX_VALUE <= result || Double.MIN_VALUE >= result || Double.NaN == result || Double.isInfinite(result)){
 			JOptionPane.showMessageDialog(null, "Invalid Input ", "Error message", JOptionPane.ERROR_MESSAGE);			
 			return -1111.1111;
 		}
@@ -58,4 +67,8 @@ public class CalculatorAdvancedOperations implements CalculatorAdvancedOperation
 		return result;
 	}
 	
+	public double negative (double number){
+		double result = number*(-1);
+		return result;
+	}
 }

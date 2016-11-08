@@ -10,7 +10,17 @@ import java.awt.event.FocusListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * 
+ * This class is the GUI part of the Scientific Calculator program.
+ * It has parts containing the whole GUI and actionPerformed 
+ * when either of the buttons were clicked.
+ * 
+ */
 public class CalculatorGUI implements ActionListener{
+	/**
+	 * Here are all the attributes.
+	 */
 	private JFrame frmCalculator;
 	private JTextField txfFirstNumber;
 	private JTextField txfSecondNumber;
@@ -26,7 +36,7 @@ public class CalculatorGUI implements ActionListener{
 	private JButton btnSubtract = new JButton("-");
 	private JButton btnMultiply = new JButton("\u00D7");
 	private JButton btnDivide = new JButton("\u00F7");
-	private JButton btnProcent = new JButton("%");
+	private JButton btnPercent = new JButton("%");
 	private JButton btnPower = new JButton("x^y");
 	private JButton btnAC = new JButton("AC");
 	private JButton btnSquareRoot = new JButton("\u221A");
@@ -48,10 +58,18 @@ public class CalculatorGUI implements ActionListener{
 	private JButton btnPi = new JButton("\u03C0");
 	private JButton btnNegative = new JButton("\u00B1");
 	
+	/**
+	 * Getters and setters for JFrame.
+	 * @return frmCalculator
+	 */
 	public JFrame getFrmCalculator() {
 		return frmCalculator;
 	}
-
+	
+	/**
+	 * 
+	 * @param frmCalculator
+	 */
 	public void setFrmCalculator(JFrame frmCalculator) {
 		this.frmCalculator = frmCalculator;
 	}
@@ -89,8 +107,7 @@ public class CalculatorGUI implements ActionListener{
 	
 	/**
 	 * Adding components to frame.
-	 * @param none
-	 * @return none
+	 * All buttons were added.
 	 */
 	public void addComponentsToFrame(){
 		lblFirstNumber.setBounds(10, 30, 96, 14);
@@ -109,8 +126,8 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(btnMultiply);
 		btnDivide.setBounds(446, 168, 60, 25);
 		frmCalculator.getContentPane().add(btnDivide);
-		btnProcent.setBounds(376, 258, 60, 25);
-		frmCalculator.getContentPane().add(btnProcent);
+		btnPercent.setBounds(376, 258, 60, 25);
+		frmCalculator.getContentPane().add(btnPercent);
 		btnPower.setBounds(166, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnPower);
 		btnAC.setBounds(446, 138, 60, 25);
@@ -154,21 +171,17 @@ public class CalculatorGUI implements ActionListener{
 		btnNegative.setBounds(96, 258, 60, 25);
 		frmCalculator.getContentPane().add(btnNegative);
 		
-		  
-		
-		
-		
-		
-	
-		
 	}
-		
+	
+	/**
+	 * Adding actionListeners	
+	 */
 	public void addActionListeners(){
 		btnAdd.addActionListener(this);
 		btnSubtract.addActionListener(this);
 		btnMultiply.addActionListener(this);
 		btnDivide.addActionListener(this);
-		btnProcent.addActionListener(this);
+		btnPercent.addActionListener(this);
 		btnPower.addActionListener(this);
 		btnAC.addActionListener(this);
 		btnSquareRoot.addActionListener(this);
@@ -191,12 +204,9 @@ public class CalculatorGUI implements ActionListener{
 		btnNegative.addActionListener(this);
 	}
 
-	
 	/**
-	 *
-	 * get value from text field
-	 * 
-	 * @return firstNUmber - Number that is written in the textfield
+	 * get value from text field1
+	 * @return firstNumber - Number that is written in the text field1
 	 **/
 	public double getValueFromTextField1(){		
 		double firstNumber = 0.0;						
@@ -204,13 +214,24 @@ public class CalculatorGUI implements ActionListener{
 		return firstNumber;		
 	}
 	
+	/**
+	 * get value from text field2
+	 * @return secondNumber - Number that is written in the text field2
+	 */
 	public double getValueFromTextField2(){		
 		double secondNumber = 0.0;						
 		secondNumber = Double.valueOf(txfSecondNumber.getText());		
 		return secondNumber;		
 	}	
 	
+	/**
+	 * ActionPerformed for all buttons
+	 * when they were clicked
+	 */
 	public void actionPerformed(ActionEvent e) {
+		/**
+		 * Defining methods for FocusGained
+		 */
 		txfFirstNumber.addFocusListener(new FocusListener() {
 	        public void focusLost(FocusEvent arg0) {
 	            // TODO Auto-generated method stub
@@ -248,8 +269,8 @@ public class CalculatorGUI implements ActionListener{
 			double result = calculator.divide(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText(String.valueOf(result));		
 		}	
-		if (e.getSource() == btnProcent){
-			double result = calAdvance.procent(getValueFromTextField1(), getValueFromTextField2());
+		if (e.getSource() == btnPercent){
+			double result = calAdvance.percent(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText(String.valueOf(result));
 		}
 		if (e.getSource() == btnPower){
@@ -283,8 +304,16 @@ public class CalculatorGUI implements ActionListener{
 		}
 		if (e.getSource() == btnPi){
 			double result  = calAdvance.PiNumber();
-			lblResult.setText(String.valueOf(result));
+			if (txfFirstNumber_selected){
+				txfFirstNumber.setText(String.valueOf(result));
+			}
+			if (txfSecondNumber_selected){
+				txfSecondNumber.setText(String.valueOf(result));
+			}
 		}
+		/**
+		 * Action performed for the number-pad.
+		 */
 		if (e.getSource() == btnZero){
 			if (txfFirstNumber_selected){
 				txfFirstNumber.setText(txfFirstNumber.getText()+"0");
@@ -373,12 +402,15 @@ public class CalculatorGUI implements ActionListener{
 				txfSecondNumber.setText(txfSecondNumber.getText()+".");
 			}
 		}
+		/**
+		 * If negative button was clicked.
+		 */
 		if (e.getSource() == btnNegative){
 			if (txfFirstNumber_selected){
-				txfFirstNumber.setText(txfFirstNumber.getText()+".");
+				txfFirstNumber.setText(String.valueOf(calAdvance.negative(getValueFromTextField1())));
 			}
 			if (txfSecondNumber_selected){
-				txfSecondNumber.setText(txfSecondNumber.getText()+".");
+				txfSecondNumber.setText(String.valueOf(calAdvance.negative(getValueFromTextField2())));
 			}
 		}
 		
