@@ -6,8 +6,19 @@ import java.util.logging.Logger;
 import org.junit.Test;
 
 import com.calculator.classes.CalculatorBasicOperations;
-
+/**
+ * 
+ * This class tests all four fundamental methods used in CalculatorBasicOperations.
+ * Each test uses random input values including zero, positive and
+ * negative values. Each test repeats for 50 times.
+ * For some methods, manual values were used in order to get
+ * hundred percent coverage. 
+ *
+ */
 public class CalculatorBasicOperationsTest {
+	/**
+	 * Attributes
+	 */
 	CalculatorBasicOperations calBasic = new CalculatorBasicOperations();
 	public static final Logger LOG = Logger.getLogger(CalculatorBasicOperations.class.getName());
 	Random random = new Random();
@@ -67,7 +78,8 @@ public class CalculatorBasicOperationsTest {
 			assertEquals("The result should be: "+ result, calBasic.divide(firstNumber, secondNumber),result,0.0001);
 		}
 		secondNumber = 0.0;
+		result = firstNumber / secondNumber;
 		LOG.info("Testing the divide method with values " + firstNumber + " and 0.0");
-		assertTrue(calBasic.divide(firstNumber, secondNumber) == -1111.1111);
+		assertEquals("The result should be: "+ result, calBasic.divide(firstNumber, secondNumber),-1111.1111,0.001);
 	}
 }

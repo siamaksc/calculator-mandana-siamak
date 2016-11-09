@@ -1,5 +1,9 @@
 package com.calculator.interfaces;
-
+/**
+ * Class interface for CalculatorAdvancedOperations.
+ * All nine methods implemented listed in this class.
+ *
+ */
 public interface CalculatorAdvancedOperationsInterface {
 	public double percent(double firstNumber, double secondNumber);
 	public double power(double firstNumber, double secondNumber);

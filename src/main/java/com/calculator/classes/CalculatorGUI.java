@@ -3,6 +3,7 @@ package com.calculator.classes;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -15,6 +16,7 @@ import java.awt.Color;
  * This class is the GUI part of the Scientific Calculator program.
  * It has parts containing the whole GUI and actionPerformed 
  * when either of the buttons were clicked.
+ * It implements actionListener.
  * 
  */
 public class CalculatorGUI implements ActionListener{
@@ -90,17 +92,15 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator = new JFrame();
 		frmCalculator.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frmCalculator.setTitle("Calculator");
-		frmCalculator.setBounds(100, 100, 544, 344);
+		frmCalculator.setBounds(100, 100, 466, 318);
 		frmCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCalculator.getContentPane().setLayout(null);
-		
 		txfFirstNumber = new JTextField();
-		txfFirstNumber.setBounds(116, 27, 329, 20);
+		txfFirstNumber.setBounds(116, 27, 314, 20);
 		frmCalculator.getContentPane().add(txfFirstNumber);
 		txfFirstNumber.setColumns(10);
-		
 		txfSecondNumber = new JTextField();
-		txfSecondNumber.setBounds(116, 58, 329, 20);
+		txfSecondNumber.setBounds(116, 58, 314, 20);
 		frmCalculator.getContentPane().add(txfSecondNumber);
 		txfSecondNumber.setColumns(10);
 	}
@@ -114,67 +114,66 @@ public class CalculatorGUI implements ActionListener{
 		frmCalculator.getContentPane().add(lblFirstNumber);
 		lblSecondNumber.setBounds(10, 61, 96, 14);
 		frmCalculator.getContentPane().add(lblSecondNumber);
-		lblResult.setBounds(66, 89, 378, 20);
+		lblResult.setBounds(66, 89, 364, 20);
 		frmCalculator.getContentPane().add(lblResult);
 		lblResult_1.setBounds(10, 89, 46, 20);
 		frmCalculator.getContentPane().add(lblResult_1);
-		btnAdd.setBounds(446, 258, 60, 25);
+		btnAdd.setBounds(370, 240, 60, 25);
 		frmCalculator.getContentPane().add(btnAdd);
-		btnSubtract.setBounds(446, 228, 60, 25);
+		btnSubtract.setBounds(370, 210, 60, 25);
 		frmCalculator.getContentPane().add(btnSubtract);
-		btnMultiply.setBounds(446, 198, 60, 25);
+		btnMultiply.setBounds(370, 180, 60, 25);
 		frmCalculator.getContentPane().add(btnMultiply);
-		btnDivide.setBounds(446, 168, 60, 25);
+		btnDivide.setBounds(370, 150, 60, 25);
 		frmCalculator.getContentPane().add(btnDivide);
-		btnPercent.setBounds(376, 258, 60, 25);
+		btnPercent.setBounds(300, 240, 60, 25);
 		frmCalculator.getContentPane().add(btnPercent);
-		btnPower.setBounds(166, 258, 60, 25);
+		btnPower.setBounds(90, 240, 60, 25);
 		frmCalculator.getContentPane().add(btnPower);
-		btnAC.setBounds(446, 138, 60, 25);
+		btnAC.setBounds(370, 120, 60, 25);
 		frmCalculator.getContentPane().add(btnAC);
-		btnSquareRoot.setBounds(166, 228, 60, 25);
+		btnSquareRoot.setBounds(90, 210, 60, 25);
 		frmCalculator.getContentPane().add(btnSquareRoot);
-		btnSine.setBounds(166, 168, 60, 25);
+		btnSine.setBounds(90, 150, 60, 25);
 		frmCalculator.getContentPane().add(btnSine);
-		btnCosine.setBounds(166, 198, 60, 25);
+		btnCosine.setBounds(90, 180, 60, 25);
 		frmCalculator.getContentPane().add(btnCosine);
-		btnTangent.setBounds(96, 168, 60, 25);
+		btnTangent.setBounds(20, 150, 60, 25);
 		frmCalculator.getContentPane().add(btnTangent);
-		btnAbsolute.setBounds(96, 198, 60, 25);
+		btnAbsolute.setBounds(20, 180, 60, 25);
 		frmCalculator.getContentPane().add(btnAbsolute);
-		btnPi.setBounds(96, 228, 60, 25);
+		btnPi.setBounds(20, 210, 60, 25);
 		frmCalculator.getContentPane().add(btnPi);
 		
-		btnZero.setBounds(236, 258, 60, 25);
+		btnZero.setBounds(160, 240, 60, 25);
 		frmCalculator.getContentPane().add(btnZero);
-		btnOne.setBounds(236, 228, 60, 25);
+		btnOne.setBounds(160, 210, 60, 25);
 		frmCalculator.getContentPane().add(btnOne);
-		btnTwo.setBounds(306, 228, 60, 25);
+		btnTwo.setBounds(230, 210, 60, 25);
 		frmCalculator.getContentPane().add(btnTwo);
-		btnThree.setBounds(376, 228, 60, 25);
+		btnThree.setBounds(300, 210, 60, 25);
 		frmCalculator.getContentPane().add(btnThree);
-		btnFour.setBounds(236, 198, 60, 25);
+		btnFour.setBounds(160, 180, 60, 25);
 		frmCalculator.getContentPane().add(btnFour);
-		btnFive.setBounds(306, 198, 60, 25);
+		btnFive.setBounds(230, 180, 60, 25);
 		frmCalculator.getContentPane().add(btnFive);
-		btnSix.setBounds(376, 198, 60, 25);
+		btnSix.setBounds(300, 180, 60, 25);
 		frmCalculator.getContentPane().add(btnSix);
-		btnSeven.setBounds(236, 168, 60, 25);
+		btnSeven.setBounds(160, 150, 60, 25);
 		frmCalculator.getContentPane().add(btnSeven);
-		btnEight.setBounds(306, 168, 60, 25);
+		btnEight.setBounds(230, 150, 60, 25);
 		frmCalculator.getContentPane().add(btnEight);
-		btnNine.setBounds(376, 168, 60, 25);
+		btnNine.setBounds(300, 150, 60, 25);
 		frmCalculator.getContentPane().add(btnNine);
 		
-		btnDecimal.setBounds(306, 258, 60, 25);
+		btnDecimal.setBounds(230, 240, 60, 25);
 		frmCalculator.getContentPane().add(btnDecimal);
-		btnNegative.setBounds(96, 258, 60, 25);
+		btnNegative.setBounds(20, 240, 60, 25);
 		frmCalculator.getContentPane().add(btnNegative);
-		
 	}
 	
 	/**
-	 * Adding actionListeners	
+	 * Adding actionListeners for buttons	
 	 */
 	public void addActionListeners(){
 		btnAdd.addActionListener(this);
@@ -250,58 +249,116 @@ public class CalculatorGUI implements ActionListener{
 	            txfSecondNumber_selected = true;
 	        }
 	    });
+	    /**
+	     * Action performed for button add
+	     * It shows an error message if the button is clicked
+	     * but either of the text fields is empty.
+	     * This Error massage was used for all methods.
+	     */
 		if (e.getSource() == btnAdd){
+			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter numbers in both boxes", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result = calculator.add(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText(String.valueOf(result));
+			}
 		}		
 		
 		if (e.getSource() == btnSubtract){
+			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter numbers in both boxes", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result = calculator.subtract(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
 		
 		if (e.getSource() == btnMultiply){
+			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter numbers in both boxes", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result = calculator.multiply(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
 		
 		if (e.getSource() == btnDivide){
+			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter numbers in both boxes", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result = calculator.divide(getValueFromTextField1(), getValueFromTextField2());
-			lblResult.setText(String.valueOf(result));		
+			lblResult.setText(String.valueOf(result));	
+			}
 		}	
 		if (e.getSource() == btnPercent){
+			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter numbers in both boxes", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result = calAdvance.percent(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
 		if (e.getSource() == btnPower){
+			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter numbers in both boxes", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result = calAdvance.power(getValueFromTextField1(), getValueFromTextField2());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
 		if (e.getSource() == btnAC){
 			txfFirstNumber.setText(null);
 			txfSecondNumber.setText(null);
 			lblResult.setText(null);
 		}
+		/**
+		 * The value will be taken from the first box,
+		 * for the methods that need only one value.
+		 * Error message will be shown if first box is empty.
+		 */
 		if (e.getSource() == btnSquareRoot){
+			if (txfFirstNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter a number in the first box", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result = calAdvance.squareRoot(getValueFromTextField1());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
 		if (e.getSource() == btnSine){
+			if (txfFirstNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter a number in the first box", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 				double result  = calAdvance.sine(getValueFromTextField1());
 				lblResult.setText(String.valueOf(result));
+				}
 			}
 		if (e.getSource() == btnCosine){
+			if (txfFirstNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter a number in the first box", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result  = calAdvance.cosine(getValueFromTextField1());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
 		if (e.getSource() == btnTangent){
+			if (txfFirstNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter a number in the first box", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result  = calAdvance.tangent(getValueFromTextField1());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
 		if (e.getSource() == btnAbsolute){
+			if (txfFirstNumber.getText().isEmpty()){
+				JOptionPane.showMessageDialog(frmCalculator, "Enter a number in the first box", "Error message", JOptionPane.ERROR_MESSAGE);
+			}else{
 			double result  = calAdvance.absolute(getValueFromTextField1());
 			lblResult.setText(String.valueOf(result));
+			}
 		}
+		/**
+		 * Pi will be shown in either of the text fields.
+		 */
 		if (e.getSource() == btnPi){
 			double result  = calAdvance.PiNumber();
 			if (txfFirstNumber_selected){
@@ -404,17 +461,23 @@ public class CalculatorGUI implements ActionListener{
 		}
 		/**
 		 * If negative button was clicked.
+		 * Error message will be shown if no value entered.
 		 */
 		if (e.getSource() == btnNegative){
 			if (txfFirstNumber_selected){
+				if (txfFirstNumber.getText().isEmpty()){
+					JOptionPane.showMessageDialog(frmCalculator, "Enter a number in box", "Error message", JOptionPane.ERROR_MESSAGE);
+				}else{
 				txfFirstNumber.setText(String.valueOf(calAdvance.negative(getValueFromTextField1())));
+				}
 			}
 			if (txfSecondNumber_selected){
+				if (txfSecondNumber.getText().isEmpty()){
+					JOptionPane.showMessageDialog(frmCalculator, "Enter a number in box", "Error message", JOptionPane.ERROR_MESSAGE);
+				}else{
 				txfSecondNumber.setText(String.valueOf(calAdvance.negative(getValueFromTextField2())));
+				}
 			}
 		}
-		
-		
-		
 	}
 }

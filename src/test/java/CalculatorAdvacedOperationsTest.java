@@ -1,29 +1,41 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import com.calculator.classes.CalculatorAdvancedOperations;
-
 import java.util.Random;
 import java.util.logging.Logger;
+/**
+ * This class tests all methods used in CalculatorAdvancedOperations class
+ * Each test uses random input values and also testing zero, positive and
+ * negative values. Each test repeats for 50 times.
+ * For some methods, manual values were used in order to get
+ * hundred percent coverage. 
+ */
 public class CalculatorAdvacedOperationsTest {
+	/**
+	 * Attributes used in this class.
+	 */
 	CalculatorAdvancedOperations calAdvance = new CalculatorAdvancedOperations();
 	public static final Logger LOG = Logger.getLogger(CalculatorAdvancedOperations.class.getName());
 	Random random = new Random();
-	@Test
-	public void testPercent() {
-		double firstNumber = 0.0;
-		double secondNumber = 0.0;
-		double result =0.0;
-		for (int i = 0; i < 50; i++) {
-			
-			firstNumber = -100.0 + random.nextDouble()*200;
-			secondNumber = -100.0 + random.nextDouble()*200;
-			result = firstNumber*(secondNumber/100);
-			LOG.info("Testing the percent method with the values " + firstNumber+" and "+ secondNumber +" = " + result);
-			assertEquals("The result should be: "+ result, calAdvance.percent(firstNumber, secondNumber),result,0.001);
+	
+		@Test
+		public void testPercent() {
+			double firstNumber = 0.0;
+			double secondNumber = 0.0;
+			double result =0.0;
+			for (int i = 0; i < 50; i++) {
+				
+				firstNumber = -100.0 + random.nextDouble()*200;
+				secondNumber = -100.0 + random.nextDouble()*200;
+				result = firstNumber*(secondNumber/100);
+				LOG.info("Testing the percent method with the values " + firstNumber+" and "+ secondNumber +" = " + result);
+				assertEquals("The result should be: "+ result, calAdvance.percent(firstNumber, secondNumber),result,0.001);
+			}
 		}
-	}
+	  /**
+	   * For testing power beside 50 random value, three manual values 
+	   * were used for testing in order to get hundred percent coverage.
+	   */
       @Test 
       public void testPower() {
     	  double firstNumber = 0.0;
@@ -67,10 +79,9 @@ public class CalculatorAdvacedOperationsTest {
     		  assertEquals("The result should be: "+ result, calAdvance.squareRoot(firstNumber),result,0.001);
     		  }else{
     			  LOG.info("Testing the SquareRoot method with the values " + firstNumber+ " = NaN");
-    			  assertTrue(calAdvance.squareRoot(firstNumber)== -1111.1111);
+    			  assertEquals("The result should be: "+ result, calAdvance.squareRoot(firstNumber),-1111.1111,0.001);
     		  }
     	  }  
-    	  
       }
     	  @Test
     	  public void testSine() {
@@ -94,6 +105,10 @@ public class CalculatorAdvacedOperationsTest {
     			  assertEquals("The result should be: "+ result, calAdvance.cosine(firstNumber),result,0.001);
     		  }
     	  }
+    	  /**
+    	   * This method tests tangent with 50 random numbers
+    	   * plus 90 and -90 degree.
+    	   */
     	  @Test
     	  public void testTangent() {
     		  double firstNumber = 0.0;
@@ -105,11 +120,13 @@ public class CalculatorAdvacedOperationsTest {
     			  assertEquals("The result should be: "+ result, calAdvance.tangent(firstNumber),result,0.001);
     		  }
     		  firstNumber = 90;
-    		  LOG.info("Testing tangent with value " + firstNumber);
-    		  assertTrue(calAdvance.tangent(firstNumber)== -1111.1111);
+    		  result = Math.tan(Math.toRadians(firstNumber));
+    		  LOG.info("Testing tangent with value " + firstNumber + " = " + result);
+    		  assertEquals("The result should be: "+ result, calAdvance.tangent(firstNumber),-1111.1111,0.001);
     		  firstNumber = -90;
+    		  result = Math.tan(Math.toRadians(firstNumber));
     		  LOG.info("Testing tangent with value " + firstNumber);
-    		  assertTrue(calAdvance.tangent(firstNumber)== -1111.1111);
+    		  assertEquals("The result should be: "+ result, calAdvance.tangent(firstNumber),-1111.1111,0.001);
     	  }
     	  @Test
     	  public void testAbsolute() {
@@ -129,5 +146,15 @@ public class CalculatorAdvacedOperationsTest {
     		  LOG.info("Testing the PiNumber method " + " = " + result);
     		  assertEquals("The result should be: "+ result, calAdvance.PiNumber(),result,0.001);
     	  }
-    	  
+    	  @Test
+    	  public void testNegative() {
+    		  double firstNumber = 0.0;
+    		  double result =0.0;
+    		  for (int i = 0; i< 50; i++){
+    			  firstNumber = -100.0 + random.nextDouble()*200;
+    			  result = firstNumber*(-1);
+    			  LOG.info("Testing the absolute method with the value " + firstNumber+ " = " + result);
+    			  assertEquals("The result should be: "+ result, calAdvance.negative(firstNumber),result,0.001);
+    		  }
+    	  }
   }
