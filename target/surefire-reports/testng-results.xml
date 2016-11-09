@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="13" passed="13">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="18724" started-at="2016-11-09T15:39:17Z" finished-at="2016-11-09T15:39:36Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="18724" started-at="2016-11-09T15:39:17Z" finished-at="2016-11-09T15:39:36Z">
+      <class name="CalculatorAdvacedOperationsTest">
+        <test-method status="PASS" signature="testTangent()[pri:0, instance:testTangent(CalculatorAdvacedOperationsTest)]" name="testTangent" duration-ms="2464" started-at="2016-11-09T16:39:17Z" finished-at="2016-11-09T16:39:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTangent -->
+        <test-method status="PASS" signature="testAbsolute()[pri:0, instance:testAbsolute(CalculatorAdvacedOperationsTest)]" name="testAbsolute" duration-ms="56" started-at="2016-11-09T16:39:20Z" finished-at="2016-11-09T16:39:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAbsolute -->
+        <test-method status="PASS" signature="testPower()[pri:0, instance:testPower(CalculatorAdvacedOperationsTest)]" name="testPower" duration-ms="1287" started-at="2016-11-09T16:39:20Z" finished-at="2016-11-09T16:39:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPower -->
+        <test-method status="PASS" signature="testSine()[pri:0, instance:testSine(CalculatorAdvacedOperationsTest)]" name="testSine" duration-ms="37" started-at="2016-11-09T16:39:21Z" finished-at="2016-11-09T16:39:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSine -->
+        <test-method status="PASS" signature="testPercent()[pri:0, instance:testPercent(CalculatorAdvacedOperationsTest)]" name="testPercent" duration-ms="46" started-at="2016-11-09T16:39:21Z" finished-at="2016-11-09T16:39:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPercent -->
+        <test-method status="PASS" signature="testPiNumber()[pri:0, instance:testPiNumber(CalculatorAdvacedOperationsTest)]" name="testPiNumber" duration-ms="2" started-at="2016-11-09T16:39:21Z" finished-at="2016-11-09T16:39:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPiNumber -->
+        <test-method status="PASS" signature="testCosine()[pri:0, instance:testCosine(CalculatorAdvacedOperationsTest)]" name="testCosine" duration-ms="46" started-at="2016-11-09T16:39:21Z" finished-at="2016-11-09T16:39:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCosine -->
+        <test-method status="PASS" signature="testSquareRoot()[pri:0, instance:testSquareRoot(CalculatorAdvacedOperationsTest)]" name="testSquareRoot" duration-ms="13581" started-at="2016-11-09T16:39:21Z" finished-at="2016-11-09T16:39:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSquareRoot -->
+        <test-method status="PASS" signature="testNegative()[pri:0, instance:testNegative(CalculatorAdvacedOperationsTest)]" name="testNegative" duration-ms="30" started-at="2016-11-09T16:39:35Z" finished-at="2016-11-09T16:39:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNegative -->
+      </class> <!-- CalculatorAdvacedOperationsTest -->
+      <class name="CalculatorBasicOperationsTest">
+        <test-method status="PASS" signature="testAdd()[pri:0, instance:testAdd(CalculatorBasicOperationsTest)]" name="testAdd" duration-ms="62" started-at="2016-11-09T16:39:35Z" finished-at="2016-11-09T16:39:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAdd -->
+        <test-method status="PASS" signature="testSubtract()[pri:0, instance:testSubtract(CalculatorBasicOperationsTest)]" name="testSubtract" duration-ms="34" started-at="2016-11-09T16:39:35Z" finished-at="2016-11-09T16:39:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSubtract -->
+        <test-method status="PASS" signature="testDivide()[pri:0, instance:testDivide(CalculatorBasicOperationsTest)]" name="testDivide" duration-ms="700" started-at="2016-11-09T16:39:35Z" finished-at="2016-11-09T16:39:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDivide -->
+        <test-method status="PASS" signature="testMultiply()[pri:0, instance:testMultiply(CalculatorBasicOperationsTest)]" name="testMultiply" duration-ms="26" started-at="2016-11-09T16:39:36Z" finished-at="2016-11-09T16:39:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMultiply -->
+      </class> <!-- CalculatorBasicOperationsTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

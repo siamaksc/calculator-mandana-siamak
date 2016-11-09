@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CalculatorGUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">calculator-mandana-siamak</a> &gt; <a href="index.source.html" class="el_package">com.calculator.classes</a> &gt; <span class="el_source">CalculatorGUI.java</span></div><h1>CalculatorGUI.java</h1><pre class="source lang-java linenums">package com.calculator.classes;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+/**
+ * 
+ * This class is the GUI part of the Scientific Calculator program.
+ * It has parts containing the whole GUI and actionPerformed 
+ * when either of the buttons were clicked.
+ * It implements actionListener.
+ * 
+ */
+public class CalculatorGUI implements ActionListener{
+	/**
+	 * Here are all the attributes.
+	 */
+	private JFrame frmCalculator;
+	private JTextField txfFirstNumber;
+	private JTextField txfSecondNumber;
+<span class="nc" id="L29">	boolean txfFirstNumber_selected = false;</span>
+<span class="nc" id="L30">	boolean txfSecondNumber_selected = false;</span>
+<span class="nc" id="L31">	private CalculatorBasicOperations calculator = new CalculatorBasicOperations();</span>
+<span class="nc" id="L32">	private CalculatorAdvancedOperations calAdvance = new CalculatorAdvancedOperations();</span>
+<span class="nc" id="L33">	private JLabel lblResult_1 = new JLabel(&quot;Result:&quot;);</span>
+<span class="nc" id="L34">	private JLabel lblResult = new JLabel(&quot;&quot;);</span>
+<span class="nc" id="L35">	private JLabel lblFirstNumber = new JLabel(&quot;first number&quot;);</span>
+<span class="nc" id="L36">	private JLabel lblSecondNumber = new JLabel(&quot;second number:&quot;);</span>
+<span class="nc" id="L37">	private JButton btnAdd = new JButton(&quot;+&quot;);</span>
+<span class="nc" id="L38">	private JButton btnSubtract = new JButton(&quot;-&quot;);</span>
+<span class="nc" id="L39">	private JButton btnMultiply = new JButton(&quot;\u00D7&quot;);</span>
+<span class="nc" id="L40">	private JButton btnDivide = new JButton(&quot;\u00F7&quot;);</span>
+<span class="nc" id="L41">	private JButton btnPercent = new JButton(&quot;%&quot;);</span>
+<span class="nc" id="L42">	private JButton btnPower = new JButton(&quot;x^y&quot;);</span>
+<span class="nc" id="L43">	private JButton btnAC = new JButton(&quot;AC&quot;);</span>
+<span class="nc" id="L44">	private JButton btnSquareRoot = new JButton(&quot;\u221A&quot;);</span>
+<span class="nc" id="L45">	private JButton btnZero = new JButton(&quot;0&quot;);</span>
+<span class="nc" id="L46">	private JButton btnOne = new JButton(&quot;1&quot;);</span>
+<span class="nc" id="L47">	private JButton btnTwo = new JButton(&quot;2&quot;);</span>
+<span class="nc" id="L48">	private JButton btnThree = new JButton(&quot;3&quot;);</span>
+<span class="nc" id="L49">	private JButton btnFour = new JButton(&quot;4&quot;);</span>
+<span class="nc" id="L50">	private JButton btnFive = new JButton(&quot;5&quot;);</span>
+<span class="nc" id="L51">	private JButton btnSix = new JButton(&quot;6&quot;);</span>
+<span class="nc" id="L52">	private JButton btnSeven = new JButton(&quot;7&quot;);</span>
+<span class="nc" id="L53">	private JButton btnEight = new JButton(&quot;8&quot;);</span>
+<span class="nc" id="L54">	private JButton btnNine = new JButton(&quot;9&quot;);</span>
+<span class="nc" id="L55">	private JButton btnDecimal = new JButton(&quot;.&quot;);</span>
+<span class="nc" id="L56">	private JButton btnSine = new JButton(&quot;sin&quot;);</span>
+<span class="nc" id="L57">	private JButton btnCosine = new JButton(&quot;cos&quot;);</span>
+<span class="nc" id="L58">	private JButton btnTangent = new JButton(&quot;tan&quot;);</span>
+<span class="nc" id="L59">	private JButton btnAbsolute = new JButton(&quot;abs&quot;);</span>
+<span class="nc" id="L60">	private JButton btnPi = new JButton(&quot;\u03C0&quot;);</span>
+<span class="nc" id="L61">	private JButton btnNegative = new JButton(&quot;\u00B1&quot;);</span>
+	
+	/**
+	 * Getters and setters for JFrame.
+	 * @return frmCalculator
+	 */
+	public JFrame getFrmCalculator() {
+<span class="nc" id="L68">		return frmCalculator;</span>
+	}
+	
+	/**
+	 * 
+	 * @param frmCalculator
+	 */
+	public void setFrmCalculator(JFrame frmCalculator) {
+<span class="nc" id="L76">		this.frmCalculator = frmCalculator;</span>
+<span class="nc" id="L77">	}</span>
+
+	/**
+	 * Create the application.
+	 */
+<span class="nc" id="L82">	public CalculatorGUI() {</span>
+<span class="nc" id="L83">		createAndShowGUI();</span>
+<span class="nc" id="L84">		addComponentsToFrame();</span>
+<span class="nc" id="L85">		addActionListeners();</span>
+<span class="nc" id="L86">	}</span>
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void createAndShowGUI() {
+<span class="nc" id="L92">		frmCalculator = new JFrame();</span>
+<span class="nc" id="L93">		frmCalculator.getContentPane().setBackground(Color.LIGHT_GRAY);</span>
+<span class="nc" id="L94">		frmCalculator.setTitle(&quot;Calculator&quot;);</span>
+<span class="nc" id="L95">		frmCalculator.setBounds(100, 100, 466, 318);</span>
+<span class="nc" id="L96">		frmCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L97">		frmCalculator.getContentPane().setLayout(null);</span>
+<span class="nc" id="L98">		txfFirstNumber = new JTextField();</span>
+<span class="nc" id="L99">		txfFirstNumber.setBounds(116, 27, 314, 20);</span>
+<span class="nc" id="L100">		frmCalculator.getContentPane().add(txfFirstNumber);</span>
+<span class="nc" id="L101">		txfFirstNumber.setColumns(10);</span>
+<span class="nc" id="L102">		txfSecondNumber = new JTextField();</span>
+<span class="nc" id="L103">		txfSecondNumber.setBounds(116, 58, 314, 20);</span>
+<span class="nc" id="L104">		frmCalculator.getContentPane().add(txfSecondNumber);</span>
+<span class="nc" id="L105">		txfSecondNumber.setColumns(10);</span>
+<span class="nc" id="L106">	}</span>
+	
+	/**
+	 * Adding components to frame.
+	 * All buttons were added.
+	 */
+	public void addComponentsToFrame(){
+<span class="nc" id="L113">		lblFirstNumber.setBounds(10, 30, 96, 14);</span>
+<span class="nc" id="L114">		frmCalculator.getContentPane().add(lblFirstNumber);</span>
+<span class="nc" id="L115">		lblSecondNumber.setBounds(10, 61, 96, 14);</span>
+<span class="nc" id="L116">		frmCalculator.getContentPane().add(lblSecondNumber);</span>
+<span class="nc" id="L117">		lblResult.setBounds(66, 89, 364, 20);</span>
+<span class="nc" id="L118">		frmCalculator.getContentPane().add(lblResult);</span>
+<span class="nc" id="L119">		lblResult_1.setBounds(10, 89, 46, 20);</span>
+<span class="nc" id="L120">		frmCalculator.getContentPane().add(lblResult_1);</span>
+<span class="nc" id="L121">		btnAdd.setBounds(370, 240, 60, 25);</span>
+<span class="nc" id="L122">		frmCalculator.getContentPane().add(btnAdd);</span>
+<span class="nc" id="L123">		btnSubtract.setBounds(370, 210, 60, 25);</span>
+<span class="nc" id="L124">		frmCalculator.getContentPane().add(btnSubtract);</span>
+<span class="nc" id="L125">		btnMultiply.setBounds(370, 180, 60, 25);</span>
+<span class="nc" id="L126">		frmCalculator.getContentPane().add(btnMultiply);</span>
+<span class="nc" id="L127">		btnDivide.setBounds(370, 150, 60, 25);</span>
+<span class="nc" id="L128">		frmCalculator.getContentPane().add(btnDivide);</span>
+<span class="nc" id="L129">		btnPercent.setBounds(300, 240, 60, 25);</span>
+<span class="nc" id="L130">		frmCalculator.getContentPane().add(btnPercent);</span>
+<span class="nc" id="L131">		btnPower.setBounds(90, 240, 60, 25);</span>
+<span class="nc" id="L132">		frmCalculator.getContentPane().add(btnPower);</span>
+<span class="nc" id="L133">		btnAC.setBounds(370, 120, 60, 25);</span>
+<span class="nc" id="L134">		frmCalculator.getContentPane().add(btnAC);</span>
+<span class="nc" id="L135">		btnSquareRoot.setBounds(90, 210, 60, 25);</span>
+<span class="nc" id="L136">		frmCalculator.getContentPane().add(btnSquareRoot);</span>
+<span class="nc" id="L137">		btnSine.setBounds(90, 150, 60, 25);</span>
+<span class="nc" id="L138">		frmCalculator.getContentPane().add(btnSine);</span>
+<span class="nc" id="L139">		btnCosine.setBounds(90, 180, 60, 25);</span>
+<span class="nc" id="L140">		frmCalculator.getContentPane().add(btnCosine);</span>
+<span class="nc" id="L141">		btnTangent.setBounds(20, 150, 60, 25);</span>
+<span class="nc" id="L142">		frmCalculator.getContentPane().add(btnTangent);</span>
+<span class="nc" id="L143">		btnAbsolute.setBounds(20, 180, 60, 25);</span>
+<span class="nc" id="L144">		frmCalculator.getContentPane().add(btnAbsolute);</span>
+<span class="nc" id="L145">		btnPi.setBounds(20, 210, 60, 25);</span>
+<span class="nc" id="L146">		frmCalculator.getContentPane().add(btnPi);</span>
+		
+<span class="nc" id="L148">		btnZero.setBounds(160, 240, 60, 25);</span>
+<span class="nc" id="L149">		frmCalculator.getContentPane().add(btnZero);</span>
+<span class="nc" id="L150">		btnOne.setBounds(160, 210, 60, 25);</span>
+<span class="nc" id="L151">		frmCalculator.getContentPane().add(btnOne);</span>
+<span class="nc" id="L152">		btnTwo.setBounds(230, 210, 60, 25);</span>
+<span class="nc" id="L153">		frmCalculator.getContentPane().add(btnTwo);</span>
+<span class="nc" id="L154">		btnThree.setBounds(300, 210, 60, 25);</span>
+<span class="nc" id="L155">		frmCalculator.getContentPane().add(btnThree);</span>
+<span class="nc" id="L156">		btnFour.setBounds(160, 180, 60, 25);</span>
+<span class="nc" id="L157">		frmCalculator.getContentPane().add(btnFour);</span>
+<span class="nc" id="L158">		btnFive.setBounds(230, 180, 60, 25);</span>
+<span class="nc" id="L159">		frmCalculator.getContentPane().add(btnFive);</span>
+<span class="nc" id="L160">		btnSix.setBounds(300, 180, 60, 25);</span>
+<span class="nc" id="L161">		frmCalculator.getContentPane().add(btnSix);</span>
+<span class="nc" id="L162">		btnSeven.setBounds(160, 150, 60, 25);</span>
+<span class="nc" id="L163">		frmCalculator.getContentPane().add(btnSeven);</span>
+<span class="nc" id="L164">		btnEight.setBounds(230, 150, 60, 25);</span>
+<span class="nc" id="L165">		frmCalculator.getContentPane().add(btnEight);</span>
+<span class="nc" id="L166">		btnNine.setBounds(300, 150, 60, 25);</span>
+<span class="nc" id="L167">		frmCalculator.getContentPane().add(btnNine);</span>
+		
+<span class="nc" id="L169">		btnDecimal.setBounds(230, 240, 60, 25);</span>
+<span class="nc" id="L170">		frmCalculator.getContentPane().add(btnDecimal);</span>
+<span class="nc" id="L171">		btnNegative.setBounds(20, 240, 60, 25);</span>
+<span class="nc" id="L172">		frmCalculator.getContentPane().add(btnNegative);</span>
+<span class="nc" id="L173">	}</span>
+	
+	/**
+	 * Adding actionListeners for buttons	
+	 */
+	public void addActionListeners(){
+<span class="nc" id="L179">		btnAdd.addActionListener(this);</span>
+<span class="nc" id="L180">		btnSubtract.addActionListener(this);</span>
+<span class="nc" id="L181">		btnMultiply.addActionListener(this);</span>
+<span class="nc" id="L182">		btnDivide.addActionListener(this);</span>
+<span class="nc" id="L183">		btnPercent.addActionListener(this);</span>
+<span class="nc" id="L184">		btnPower.addActionListener(this);</span>
+<span class="nc" id="L185">		btnAC.addActionListener(this);</span>
+<span class="nc" id="L186">		btnSquareRoot.addActionListener(this);</span>
+<span class="nc" id="L187">		btnSine.addActionListener(this);</span>
+<span class="nc" id="L188">		btnCosine.addActionListener(this);</span>
+<span class="nc" id="L189">		btnTangent.addActionListener(this);</span>
+<span class="nc" id="L190">		btnAbsolute.addActionListener(this);</span>
+<span class="nc" id="L191">		btnPi.addActionListener(this);</span>
+<span class="nc" id="L192">		btnZero.addActionListener(this);</span>
+<span class="nc" id="L193">		btnOne.addActionListener(this);</span>
+<span class="nc" id="L194">		btnTwo.addActionListener(this);</span>
+<span class="nc" id="L195">		btnThree.addActionListener(this);</span>
+<span class="nc" id="L196">		btnFour.addActionListener(this);</span>
+<span class="nc" id="L197">		btnFive.addActionListener(this);</span>
+<span class="nc" id="L198">		btnSix.addActionListener(this);</span>
+<span class="nc" id="L199">		btnSeven.addActionListener(this);</span>
+<span class="nc" id="L200">		btnEight.addActionListener(this);</span>
+<span class="nc" id="L201">		btnNine.addActionListener(this);</span>
+<span class="nc" id="L202">		btnDecimal.addActionListener(this);</span>
+<span class="nc" id="L203">		btnNegative.addActionListener(this);</span>
+<span class="nc" id="L204">	}</span>
+
+	/**
+	 * get value from text field1
+	 * @return firstNumber - Number that is written in the text field1
+	 **/
+	public double getValueFromTextField1(){		
+<span class="nc" id="L211">		double firstNumber = 0.0;						</span>
+<span class="nc" id="L212">		firstNumber = Double.valueOf(txfFirstNumber.getText());		</span>
+<span class="nc" id="L213">		return firstNumber;		</span>
+	}
+	
+	/**
+	 * get value from text field2
+	 * @return secondNumber - Number that is written in the text field2
+	 */
+	public double getValueFromTextField2(){		
+<span class="nc" id="L221">		double secondNumber = 0.0;						</span>
+<span class="nc" id="L222">		secondNumber = Double.valueOf(txfSecondNumber.getText());		</span>
+<span class="nc" id="L223">		return secondNumber;		</span>
+	}	
+	
+	/**
+	 * ActionPerformed for all buttons
+	 * when they were clicked
+	 */
+	public void actionPerformed(ActionEvent e) {
+		/**
+		 * Defining methods for FocusGained
+		 */
+<span class="nc" id="L234">		txfFirstNumber.addFocusListener(new FocusListener() {</span>
+	        public void focusLost(FocusEvent arg0) {
+	            // TODO Auto-generated method stub
+<span class="nc" id="L237">	        }</span>
+	        public void focusGained(FocusEvent arg0) {
+<span class="nc" id="L239">	            txfFirstNumber_selected = true;</span>
+<span class="nc" id="L240">	            txfSecondNumber_selected = false;</span>
+<span class="nc" id="L241">	        }</span>
+	    });
+<span class="nc" id="L243">	    txfSecondNumber.addFocusListener(new FocusListener() {</span>
+	        public void focusLost(FocusEvent e) {
+	            // TODO Auto-generated method stub
+<span class="nc" id="L246">	        }</span>
+	        public void focusGained(FocusEvent e) {
+<span class="nc" id="L248">	            txfFirstNumber_selected = false;</span>
+<span class="nc" id="L249">	            txfSecondNumber_selected = true;</span>
+<span class="nc" id="L250">	        }</span>
+	    });
+	    /**
+	     * Action performed for button add
+	     * It shows an error message if the button is clicked
+	     * but either of the text fields is empty.
+	     * This Error massage was used for all methods.
+	     */
+<span class="nc bnc" id="L258" title="All 2 branches missed.">		if (e.getSource() == btnAdd){</span>
+<span class="nc bnc" id="L259" title="All 4 branches missed.">			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){</span>
+<span class="nc" id="L260">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter numbers in both boxes&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L262">			double result = calculator.add(getValueFromTextField1(), getValueFromTextField2());</span>
+<span class="nc" id="L263">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}		
+		
+<span class="nc bnc" id="L267" title="All 2 branches missed.">		if (e.getSource() == btnSubtract){</span>
+<span class="nc bnc" id="L268" title="All 4 branches missed.">			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){</span>
+<span class="nc" id="L269">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter numbers in both boxes&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L271">			double result = calculator.subtract(getValueFromTextField1(), getValueFromTextField2());</span>
+<span class="nc" id="L272">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+		
+<span class="nc bnc" id="L276" title="All 2 branches missed.">		if (e.getSource() == btnMultiply){</span>
+<span class="nc bnc" id="L277" title="All 4 branches missed.">			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){</span>
+<span class="nc" id="L278">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter numbers in both boxes&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L280">			double result = calculator.multiply(getValueFromTextField1(), getValueFromTextField2());</span>
+<span class="nc" id="L281">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+		
+<span class="nc bnc" id="L285" title="All 2 branches missed.">		if (e.getSource() == btnDivide){</span>
+<span class="nc bnc" id="L286" title="All 4 branches missed.">			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){</span>
+<span class="nc" id="L287">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter numbers in both boxes&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L289">			double result = calculator.divide(getValueFromTextField1(), getValueFromTextField2());</span>
+<span class="nc" id="L290">			lblResult.setText(String.valueOf(result));	</span>
+			}
+		}	
+<span class="nc bnc" id="L293" title="All 2 branches missed.">		if (e.getSource() == btnPercent){</span>
+<span class="nc bnc" id="L294" title="All 4 branches missed.">			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){</span>
+<span class="nc" id="L295">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter numbers in both boxes&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L297">			double result = calAdvance.percent(getValueFromTextField1(), getValueFromTextField2());</span>
+<span class="nc" id="L298">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+<span class="nc bnc" id="L301" title="All 2 branches missed.">		if (e.getSource() == btnPower){</span>
+<span class="nc bnc" id="L302" title="All 4 branches missed.">			if (txfFirstNumber.getText().isEmpty() || txfSecondNumber.getText().isEmpty()){</span>
+<span class="nc" id="L303">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter numbers in both boxes&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L305">			double result = calAdvance.power(getValueFromTextField1(), getValueFromTextField2());</span>
+<span class="nc" id="L306">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+<span class="nc bnc" id="L309" title="All 2 branches missed.">		if (e.getSource() == btnAC){</span>
+<span class="nc" id="L310">			txfFirstNumber.setText(null);</span>
+<span class="nc" id="L311">			txfSecondNumber.setText(null);</span>
+<span class="nc" id="L312">			lblResult.setText(null);</span>
+		}
+		/**
+		 * The value will be taken from the first box,
+		 * for the methods that need only one value.
+		 * Error message will be shown if first box is empty.
+		 */
+<span class="nc bnc" id="L319" title="All 2 branches missed.">		if (e.getSource() == btnSquareRoot){</span>
+<span class="nc bnc" id="L320" title="All 2 branches missed.">			if (txfFirstNumber.getText().isEmpty()){</span>
+<span class="nc" id="L321">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter a number in the first box&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L323">			double result = calAdvance.squareRoot(getValueFromTextField1());</span>
+<span class="nc" id="L324">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+<span class="nc bnc" id="L327" title="All 2 branches missed.">		if (e.getSource() == btnSine){</span>
+<span class="nc bnc" id="L328" title="All 2 branches missed.">			if (txfFirstNumber.getText().isEmpty()){</span>
+<span class="nc" id="L329">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter a number in the first box&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L331">				double result  = calAdvance.sine(getValueFromTextField1());</span>
+<span class="nc" id="L332">				lblResult.setText(String.valueOf(result));</span>
+				}
+			}
+<span class="nc bnc" id="L335" title="All 2 branches missed.">		if (e.getSource() == btnCosine){</span>
+<span class="nc bnc" id="L336" title="All 2 branches missed.">			if (txfFirstNumber.getText().isEmpty()){</span>
+<span class="nc" id="L337">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter a number in the first box&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L339">			double result  = calAdvance.cosine(getValueFromTextField1());</span>
+<span class="nc" id="L340">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+<span class="nc bnc" id="L343" title="All 2 branches missed.">		if (e.getSource() == btnTangent){</span>
+<span class="nc bnc" id="L344" title="All 2 branches missed.">			if (txfFirstNumber.getText().isEmpty()){</span>
+<span class="nc" id="L345">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter a number in the first box&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L347">			double result  = calAdvance.tangent(getValueFromTextField1());</span>
+<span class="nc" id="L348">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+<span class="nc bnc" id="L351" title="All 2 branches missed.">		if (e.getSource() == btnAbsolute){</span>
+<span class="nc bnc" id="L352" title="All 2 branches missed.">			if (txfFirstNumber.getText().isEmpty()){</span>
+<span class="nc" id="L353">				JOptionPane.showMessageDialog(frmCalculator, &quot;Enter a number in the first box&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+			}else{
+<span class="nc" id="L355">			double result  = calAdvance.absolute(getValueFromTextField1());</span>
+<span class="nc" id="L356">			lblResult.setText(String.valueOf(result));</span>
+			}
+		}
+		/**
+		 * Pi will be shown in either of the text fields.
+		 */
+<span class="nc bnc" id="L362" title="All 2 branches missed.">		if (e.getSource() == btnPi){</span>
+<span class="nc" id="L363">			double result  = calAdvance.PiNumber();</span>
+<span class="nc bnc" id="L364" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L365">				txfFirstNumber.setText(String.valueOf(result));</span>
+			}
+<span class="nc bnc" id="L367" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L368">				txfSecondNumber.setText(String.valueOf(result));</span>
+			}
+		}
+		/**
+		 * Action performed for the number-pad.
+		 */
+<span class="nc bnc" id="L374" title="All 2 branches missed.">		if (e.getSource() == btnZero){</span>
+<span class="nc bnc" id="L375" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L376">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;0&quot;);</span>
+			}
+<span class="nc bnc" id="L378" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L379">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;0&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L382" title="All 2 branches missed.">		if (e.getSource() == btnOne){</span>
+<span class="nc bnc" id="L383" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L384">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;1&quot;);</span>
+			}
+<span class="nc bnc" id="L386" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L387">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;1&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L390" title="All 2 branches missed.">		if (e.getSource() == btnTwo){</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L392">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;2&quot;);</span>
+			}
+<span class="nc bnc" id="L394" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L395">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;2&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L398" title="All 2 branches missed.">		if (e.getSource() == btnThree){</span>
+<span class="nc bnc" id="L399" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L400">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;3&quot;);</span>
+			}
+<span class="nc bnc" id="L402" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L403">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;3&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L406" title="All 2 branches missed.">		if (e.getSource() == btnFour){</span>
+<span class="nc bnc" id="L407" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L408">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;4&quot;);</span>
+			}
+<span class="nc bnc" id="L410" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L411">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;4&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L414" title="All 2 branches missed.">		if (e.getSource() == btnFive){</span>
+<span class="nc bnc" id="L415" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L416">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;5&quot;);</span>
+			}
+<span class="nc bnc" id="L418" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L419">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;5&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L422" title="All 2 branches missed.">		if (e.getSource() == btnSix){</span>
+<span class="nc bnc" id="L423" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L424">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;6&quot;);</span>
+			}
+<span class="nc bnc" id="L426" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L427">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;6&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L430" title="All 2 branches missed.">		if (e.getSource() == btnSeven){</span>
+<span class="nc bnc" id="L431" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L432">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;7&quot;);</span>
+			}
+<span class="nc bnc" id="L434" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L435">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;7&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L438" title="All 2 branches missed.">		if (e.getSource() == btnEight){</span>
+<span class="nc bnc" id="L439" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L440">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;8&quot;);</span>
+			}
+<span class="nc bnc" id="L442" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L443">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;8&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L446" title="All 2 branches missed.">		if (e.getSource() == btnNine){</span>
+<span class="nc bnc" id="L447" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L448">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;9&quot;);</span>
+			}
+<span class="nc bnc" id="L450" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L451">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;9&quot;);</span>
+			}
+		}
+<span class="nc bnc" id="L454" title="All 2 branches missed.">		if (e.getSource() == btnDecimal){</span>
+<span class="nc bnc" id="L455" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc" id="L456">				txfFirstNumber.setText(txfFirstNumber.getText()+&quot;.&quot;);</span>
+			}
+<span class="nc bnc" id="L458" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc" id="L459">				txfSecondNumber.setText(txfSecondNumber.getText()+&quot;.&quot;);</span>
+			}
+		}
+		/**
+		 * If negative button was clicked.
+		 * Error message will be shown if no value entered.
+		 */
+<span class="nc bnc" id="L466" title="All 2 branches missed.">		if (e.getSource() == btnNegative){</span>
+<span class="nc bnc" id="L467" title="All 2 branches missed.">			if (txfFirstNumber_selected){</span>
+<span class="nc bnc" id="L468" title="All 2 branches missed.">				if (txfFirstNumber.getText().isEmpty()){</span>
+<span class="nc" id="L469">					JOptionPane.showMessageDialog(frmCalculator, &quot;Enter a number in box&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+				}else{
+<span class="nc" id="L471">				txfFirstNumber.setText(String.valueOf(calAdvance.negative(getValueFromTextField1())));</span>
+				}
+			}
+<span class="nc bnc" id="L474" title="All 2 branches missed.">			if (txfSecondNumber_selected){</span>
+<span class="nc bnc" id="L475" title="All 2 branches missed.">				if (txfSecondNumber.getText().isEmpty()){</span>
+<span class="nc" id="L476">					JOptionPane.showMessageDialog(frmCalculator, &quot;Enter a number in box&quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+				}else{
+<span class="nc" id="L478">				txfSecondNumber.setText(String.valueOf(calAdvance.negative(getValueFromTextField2())));</span>
+				}
+			}
+		}
+<span class="nc" id="L482">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CalculatorAdvancedOperations.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">calculator-mandana-siamak</a> &gt; <a href="index.source.html" class="el_package">com.calculator.classes</a> &gt; <span class="el_source">CalculatorAdvancedOperations.java</span></div><h1>CalculatorAdvancedOperations.java</h1><pre class="source lang-java linenums">package com.calculator.classes;
+
+
+import javax.swing.JOptionPane;
+import com.calculator.interfaces.CalculatorAdvancedOperationsInterface;
+
+/**
+ * This class contains nine operations for advance methods of the Scientific Calculator program.
+ * (percent,power,squareRoot,sine,cosine,tangent,absolute,PiNumber,Negative)
+ * Each method in this class does the calculation needed for each method.
+ * This class implements from the interface for advance operations.
+ * 
+ */
+<span class="fc" id="L14">public class CalculatorAdvancedOperations implements CalculatorAdvancedOperationsInterface {</span>
+
+	/**
+	 * Calculate percent of two numbers.
+	 */
+	public double percent(double firstNumber, double secondNumber) {
+<span class="fc" id="L20">		double result = firstNumber*(secondNumber/100);</span>
+<span class="fc" id="L21">		return result;</span>
+	}
+	/**
+	 * Calculate firstNumber to power of secondNumber.
+	 * It shows error message if the result becomes bigger than
+	 * double max value or smaller than double min value or if it
+	 * is not a number(NaN).
+	 */
+	public double power(double firstNumber, double secondNumber) {
+<span class="fc" id="L30">		double result= Math.pow(firstNumber, secondNumber);</span>
+<span class="pc bpc" id="L31" title="2 of 8 branches missed.">		if (Double.MAX_VALUE &lt;= result || Double.MIN_VALUE &gt;= result || Double.NaN == result || Double.isInfinite(result)){</span>
+<span class="fc" id="L32">			JOptionPane.showMessageDialog(null, &quot;Invalid Input &quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);			</span>
+<span class="fc" id="L33">			return -1111.1111;</span>
+		}
+<span class="fc" id="L35">		return result;</span>
+	}
+	/**
+	 * Calculates the square root of firstNumber.
+	 * It shows an error message if number is negative.
+	 */
+	public double squareRoot (double firstNumber){
+<span class="fc bfc" id="L42" title="All 2 branches covered.">		if (firstNumber &lt; 0) {</span>
+<span class="fc" id="L43">			JOptionPane.showMessageDialog(null, &quot;Invalid Input &quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+<span class="fc" id="L44">			return -1111.1111;</span>
+		}
+<span class="fc" id="L46">		double result = Math.sqrt(firstNumber);</span>
+<span class="fc" id="L47">		return result;</span>
+	}
+	
+	public double sine (double firstNumber){
+<span class="fc" id="L51">		double result = Math.sin(Math.toRadians(firstNumber));</span>
+<span class="fc" id="L52">		return result;</span>
+	}
+	
+	public double cosine (double firstNumber){
+<span class="fc" id="L56">		double result = Math.cos(Math.toRadians(firstNumber));</span>
+<span class="fc" id="L57">		return result;</span>
+	}
+	/**
+	 * Calculates tangent of the firstNumber in degree.
+	 * Error message will be shown for tangent of 90 or -90 degree,
+	 * since it will be infinite.
+	 */
+	public double tangent (double firstNumber){
+<span class="fc" id="L65">		double result = Math.tan(Math.toRadians(firstNumber));</span>
+<span class="fc bfc" id="L66" title="All 4 branches covered.">		if (firstNumber == 90 || firstNumber == -90){</span>
+<span class="fc" id="L67">			JOptionPane.showMessageDialog(null, &quot;Invalid Input &quot;, &quot;Error message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+<span class="fc" id="L68">			return -1111.1111;</span>
+		}
+<span class="fc" id="L70">		return result;</span>
+	}
+	
+	public double absolute (double firstNumber){
+<span class="fc" id="L74">		double result = Math.abs(firstNumber);</span>
+<span class="fc" id="L75">		return result;</span>
+	}
+	
+	public double PiNumber(){
+<span class="fc" id="L79">		double result  = Math.PI;</span>
+<span class="fc" id="L80">		return result;</span>
+	}
+	/**
+	 * @return result which is the negative of the value entered.
+	 */
+	public double negative (double number){
+<span class="fc" id="L86">		double result = number*(-1);</span>
+<span class="fc" id="L87">		return result;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
